@@ -1,0 +1,54 @@
+h1{
+  color:#f4a142;
+  font-weight:300;
+
+}
+input{
+  border-radius: 4px;
+  background-color:#f4a142;
+  font-family: Verdana;
+  font-weight: 300;
+  margin: auto;
+}
+
+button{
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #38afff;
+    color:black;
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+    font-family: Verdana;
+    font-weight: 500;
+    margin: auto;
+
+}
+button:hover{
+    background-color: #42f442;
+}
+
+a{
+    color:  black;
+    font-weight:600;
+
+}
+a:hover{
+  color: #38afff;
+}
+
+footer{
+  background-color:#f4a142;
+  margin-top: 0px;
+  height:40px;
+  padding:0px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right:0;
+  width: 100%;
+  margin-bottom: 0px;
+}
+body{
+  margin-bottom:50px;
+}
