@@ -1,0 +1,15 @@
+
+
+#timeLineCanvas{
+    position: absolute;
+    padding: 0 25px;
+}
+
+.open{
+    color: blue;
+}
+
+h2{
+    font-size: 20pt;
+    margin-bottom: 4px;
+}
