@@ -2,10 +2,12 @@
  * Created by Chris on 4/11/2017.
  */
 
-var pdfjs = require('pdfjs-dist');
-var fs = require('fs');
 
-function getPageText(file, page){
+
+module.exports = function getPageText(file, page){
+    var pdfjs = require('pdfjs-dist');
+    var fs = require('fs');
+
     return new Promise((resolve, reject) => {
         pdfjs.getDocument(file).then(function (pdf) {
             pdf.getPage(page).then(function (page) {
@@ -19,9 +21,11 @@ function getPageText(file, page){
             });
         });
     });
-}
+};
 
 /* Usage example:
+var getPageText = require('pdfread');
+
 var file = fs.readFileSync('ClimateScience.pdf');
 getPageText(file, 1).then(function(text){
     console.log(text);
