@@ -1,0 +1,1 @@
+pdfReader=require('./pdfread.js')
