@@ -4,24 +4,27 @@
 
 
 
-module.exports = function getPageText(file, page){
-    var pdfjs = require('pdfjs-dist');
-    var fs = require('fs');
+ module.exports = function getPageText(file, page){
+     var pdfjs = require('pdfjs-dist');
+     var fs = require('fs');
 
-    return new Promise((resolve, reject) => {
-        pdfjs.getDocument(file).then(function (pdf) {
-            pdf.getPage(page).then(function (page) {
-                page.getTextContent().then(text => {
-                    var ret = '';
-                    text.items.forEach(item => {
-                        ret += item.str += '\n'
-                    });
-                    resolve(ret);
-                });
-            });
-        });
-    });
-};
+     return new Promise((resolve, reject) => {
+         pdfjs.getDocument(file).then(function (pdf) {
+             pdf.getPage(page).then(function (pages) {
+                 pages.getTextContent().then(text => {
+                     var ret = '';
+                     text.items.forEach(item => {
+                         ret += item.str += '\n'
+                     });
+                     var arr=[]
+                     console.log(page)
+                     arr=[ret,page]
+                     resolve(arr);
+                 });
+             });
+         });
+     });
+ };
 
 /* Usage example:
 var getPageText = require('pdfread');
