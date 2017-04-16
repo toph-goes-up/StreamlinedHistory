@@ -2,9 +2,9 @@
  * Created by Chris on 3/28/2017.
  */
 let $ = require('jquery');
+let ipc = require('electron').ipcRenderer;
 
 let main = function(){
-    console.log('Running!');
 
     let canvas = document.getElementById("timeLineCanvas");
     ctx = canvas.getContext('2d');
@@ -59,25 +59,42 @@ let main = function(){
         yearToX:function(year){
             return (year - this.startYear) / (this.endYear - this.startYear);
         },
-        draw: function () {
+        drawMainLine: function () {
             canvas.width = timeline.width + 100;
             canvas.height = timeline.height;
             ctx.strokeStyle = '#F4A142';
             ctx.strokeRect(this.xoffset, canvas.height * .5, timeline.width, 4);
+        },
+        redraw: function(timeLineData) {
+            ctx.clearRect(0,0, canvas.width, canvas.height);
+            this.startYear = 0; //GET MIN OF TLD
+            this.endYear = 400; //GET MAX OF TLD
+            this.drawMainLine();
+            [0,1,2,3,4].forEach(i => {
+                year = (this.endYear - this.startYear)*i/4 + this.startYear;
+                console.log(year)
+                pos = this.yearToX(year);
+                this.addBigTick(pos, year.toString());
+            });
         }
     };
 
-    /**Sample Data
-
-    timeline.draw();
+    timeline.drawMainLine();
     [0,1,2,3,4].forEach(x => timeline.addBigTick(x/4, x * 1000));
     timeline.addDataPoint(86, 'Rome implodes','Rome ceases to exist as an empire, but now it\'s a pretty cool city', 'http://www.github.com', 2);
     timeline.addDataPoint(277, 'Timeline stacking','Four positions on the timeline make everything fit well','http://www.dominos.com', 1);
     timeline.addDataPoint(2222, 'Half Life 3 Released','No word on Rick and Morty season 3','http://www.dominos.com', -1);
     timeline.addDataPoint(1999, 'Hidden Details', '', '', -2)
 
-     **/
+    timeline.redraw('herp');
 
-}
+    $('#filter').on('change', function(){
+        ipc.send('getFilteredTimelineData');
+    });
+};
+
+ipc.on('timelineData', function(event, arg){
+    console.log(arg);
+});
 
 $(document).ready(main);

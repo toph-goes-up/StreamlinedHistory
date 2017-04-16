@@ -3,6 +3,7 @@
 #timeLineCanvas{
     position: absolute;
     padding: 0 25px;
+    margin-top: 15px;
 }
 
 .open{
@@ -12,4 +13,15 @@
 h2{
     font-size: 20pt;
     margin-bottom: 4px;
+}
+
+#filter{
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 45px;
+    position: fixed;
+    margin: 15px;
+    font-size: 30pt;
+    z-index: 1;
 }
