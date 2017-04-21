@@ -17,7 +17,6 @@
                          ret += item.str += '\n'
                      });
                      var arr=[]
-                     console.log(page)
                      arr=[ret,page]
                      resolve(arr);
                  });
