@@ -72,7 +72,6 @@ let main = function(){
             this.drawMainLine();
             [0,1,2,3,4].forEach(i => {
                 year = (this.endYear - this.startYear)*i/4 + this.startYear;
-                console.log(year)
                 pos = this.yearToX(year);
                 this.addBigTick(pos, year.toString());
             });
@@ -88,13 +87,15 @@ let main = function(){
 
     timeline.redraw('herp');
 
+
+
     $('#filter').on('change', function(){
         ipc.send('getFilteredTimelineData');
     });
 };
 
 ipc.on('timelineData', function(event, arg){
-    console.log(arg);
+    //console.log(arg);
 });
 
 $(document).ready(main);

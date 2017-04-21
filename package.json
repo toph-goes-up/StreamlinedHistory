@@ -20,8 +20,10 @@
     "electron": "~1.6.2"
   },
   "dependencies": {
+    "classifier": "^0.1.0",
     "jquery": "^3.2.1",
     "lunr": "^2.0.1",
-    "pdf2json": "^1.1.7"
+    "pdf2json": "^1.1.7",
+    "pdfjs-dist": "^1.8.213"
   }
 }
