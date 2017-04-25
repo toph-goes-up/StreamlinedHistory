@@ -16,6 +16,11 @@ input{
   font-weight: 300;
   margin: auto;
 }
+::-webkit-input-placeholder { /* Chrome */
+  color: black;
+  opacity: 1;
+}
+
 
 button{
     display: inline-block;

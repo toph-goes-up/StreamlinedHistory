@@ -7,7 +7,7 @@ const BrowserWindow = electron.BrowserWindow;
 const path = require('path');
 const url = require('url');
 const ipc = require('electron').ipcMain;
-
+//console.log("hello")
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
@@ -34,9 +34,9 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   });
-
+console.log("i can make buttons do things")
   //testQuery('technical');
-    testIndexer();
+  //  testIndexer();
 }
 
 // This method will be called when Electron has finished
@@ -63,9 +63,13 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-ipc.on('gettimeline', function(event, arg){
-  event.sender.send('PING', 'WINGS!');
-  //console.log('PING');
+ipc.on('buttonClicked', function(event, arg){
+  //event.sender.send(arg)
+  console.log(arg)
+  indexPdf=require("./indexer.js");
+  indexPdf("./"+arg[0], arg[1], arg[2]).then(function(lunr){
+      console.log(lunr)
+  });
 });
 
 function testQuery(query){
@@ -77,6 +81,7 @@ function testQuery(query){
 }
 
 function testIndexer(){
+  console.log("in test")
     indexPdf=require("./indexer.js");
     indexPdf("./irish.pdf", 9, 217).then(function(lunr){
         console.log(lunr)
