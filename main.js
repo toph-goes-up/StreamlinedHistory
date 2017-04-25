@@ -7,6 +7,7 @@ const BrowserWindow = electron.BrowserWindow;
 const path = require('path');
 const url = require('url');
 const ipc = require('electron').ipcMain;
+
 //console.log("hello")
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -19,13 +20,15 @@ function createWindow () {
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, '/index.html'),
+    pathname: path.join(__dirname, '/display.html'),
     protocol: 'file:',
     slashes: true
   }));
 
   // Open the DevTools.
+  mainWindow.webContents.send('timelineData', [{date: "1546", sentence: "This is a sentence", page: "34"}])
   mainWindow.webContents.openDevTools();
+
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
