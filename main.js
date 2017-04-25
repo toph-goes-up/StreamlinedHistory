@@ -19,7 +19,7 @@ function createWindow () {
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, '/index.html'),
+    pathname: path.join(__dirname, '/display.html'),
     protocol: 'file:',
     slashes: true
   }));
@@ -34,9 +34,6 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   });
-console.log("i can make buttons do things")
-  //testQuery('technical');
-  //  testIndexer();
 }
 
 // This method will be called when Electron has finished
@@ -67,7 +64,7 @@ ipc.on('buttonClicked', function(event, arg){
   //event.sender.send(arg)
   console.log(arg)
   indexPdf=require("./indexer.js");
-  indexPdf("./"+arg[0], arg[1], arg[2]).then(function(lunr){
+  indexPdf("./"+arg[0], parseInt(arg[1]), parseInt(arg[2])).then(function(lunr){
       console.log(lunr)
   });
 });
@@ -86,4 +83,5 @@ function testIndexer(){
     indexPdf("./irish.pdf", 9, 217).then(function(lunr){
         console.log(lunr)
     });
+
 }
