@@ -67,7 +67,7 @@ ipc.on('buttonClicked', function(event, arg){
   //event.sender.send(arg)
   console.log(arg)
   indexPdf=require("./indexer.js");
-  indexPdf("./"+arg[0], arg[1], arg[2]).then(function(lunr){
+  indexPdf("./"+arg[0], parseInt(arg[1]), parseInt(arg[2])).then(function(lunr){
       console.log(lunr)
   });
 });
