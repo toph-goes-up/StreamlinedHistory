@@ -3,6 +3,8 @@ const electron = require('electron');
 const app = electron.app;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
+indexPdf = require("./indexer.js");
+classify = require("./classify.js");
 
 const path = require('path');
 const url = require('url');
@@ -17,10 +19,9 @@ function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600});
 
-
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, '/display.html'),
+    pathname: path.join(__dirname, '/index.html'),
     protocol: 'file:',
     slashes: true
   }));
@@ -28,7 +29,6 @@ function createWindow () {
   // Open the DevTools.
   mainWindow.webContents.send('timelineData', [{date: "1546", sentence: "This is a sentence", page: "34"}])
   mainWindow.webContents.openDevTools();
-
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -64,22 +64,20 @@ app.on('activate', function () {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 ipc.on('buttonClicked', function(event, arg){
-  console.log(arg)
-  indexPdf=require("./indexer.js");
-  indexPdf("./"+arg[0], parseInt(arg[1]), parseInt(arg[2])).then(function(lunr){
-    //event.sender.send("timelineData", all the timeline data)
-    console.log(lunr)
+  console.log(arg);
+  indexPdf("./"+arg[0], parseInt(arg[1]), parseInt(arg[2])).then(timelineData => {
+    console.log('Sending ' + timelineData.length() + " timeline items...");
+    event.sender.send('timelineData', timelineData);
+    console.log('Sent.')
   });
 });
+
 ipc.on("reply", function(event, arg){
-event.sender.send("timelineData",[{date:"1974",sentence:"this is a sentence",page:"34"}])
-})
+  event.sender.send("timelineData",[{date:"1974",sentence:"this is a sentence",page:"34"}])
+});
 
 function testIndexer(){
-    indexPdf = require("./indexer.js");
-    classify = require("./classify.js");
     indexPdf("./pdfs/irish.pdf", 9, 217).then(sentences => {
       dates = classify(sentences);
     });
-
 }

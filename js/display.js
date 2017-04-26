@@ -1,8 +1,8 @@
 let $ = require('jquery');
 ipcRender = require('electron').ipcRenderer;
-ipcRender.send("reply","hello")
+ipcRender.send("reply","hello");
 ipcRender.on('timelineData', function(event, arg){
-  console.log("In the ipcRender")
+  console.log("In the ipcRender");
   $('#table tr').not(':first').not(':last').remove();
 var html = '';
 for(var i = 0; i < arg.length; i++)
