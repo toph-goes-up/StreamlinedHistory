@@ -20,13 +20,12 @@ function createWindow () {
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, '/display.html'),
+    pathname: path.join(__dirname, '/index.html'),
     protocol: 'file:',
     slashes: true
   }));
 
   // Open the DevTools.
-  mainWindow.webContents.send('timelineData', [{date: "1546", sentence: "This is a sentence", page: "34"}])
   mainWindow.webContents.openDevTools();
 
 
@@ -70,23 +69,25 @@ ipc.on('buttonClicked', function(event, arg){
       console.log(lunr)
   });
 });
-ipc.on("reply", function(event, arg){
-event.sender.send("timelineData",[{date:"1974",sentence:"this is a sentence",page:"34"}])
-})
+//testing for display.js
+//ipc.on("reply", function(event, arg){
+//event.sender.send('timelineData', [{date: "1546", sentence: "This is a sentence", page: "34"},{date: "1546", sentence: "This is a verrrrrrrrrrry biggggggggggggggggg sentence", page: "34"}])
 
-function testQuery(query){
-  index = require('./indexer')('./sample.pdf');
-  index.then(function(index){
-    let results = index.search(query);
-    console.log(results)
-  });
-}
+//})
+//
+//function testQuery(query){
+  //index = require('./indexer')('./sample.pdf');
+  //index.then(function(index){
+    //let results = index.search(query);
+    //console.log(results)
+  //});
+//}
 
-function testIndexer(){
-  console.log("in test")
-    indexPdf=require("./indexer.js");
-    indexPdf("./irish.pdf", 9, 217).then(function(lunr){
-        console.log(lunr)
-    });
+//function testIndexer(){
+//  console.log("in test")
+  //  indexPdf=require("./indexer.js");
+    //indexPdf("./irish.pdf", 9, 217).then(function(lunr){
+      //  console.log(lunr)
+    //});
 
-}
+//}
