@@ -27,7 +27,6 @@ function createWindow () {
   }));
 
   // Open the DevTools.
-  mainWindow.webContents.send('timelineData', [{date: "1546", sentence: "This is a sentence", page: "34"}])
   mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
@@ -72,9 +71,24 @@ ipc.on('buttonClicked', function(event, arg){
   });
 });
 
+//testing for display.js
 ipc.on("reply", function(event, arg){
-  event.sender.send("timelineData",[{date:"1974",sentence:"this is a sentence",page:"34"}])
-});
+ json=[{date: "1546", sentence: "This is a sentence", page: "34"},
+  {date: "1436", sentence: "This is a verrrrrrrrrrry biggggggggggggggggg sentence", page: "34"},
+  {date: "1136", sentence: "This is a verrrrrrrrrrry biggggggggggggggggg sentence", page: "34"},
+  {date: "1336", sentence: "This is a verrrrrrrrrrry biggggggggggggggggg sentence", page: "34"}
+]
+event.sender.send('timelineData', json)
+
+})
+
+function testQuery(query){
+  index = require('./indexer')('./sample.pdf');
+  index.then(function(index){
+    let results = index.search(query);
+    console.log(results)
+  });
+}
 
 function testIndexer(){
     indexPdf("./pdfs/irish.pdf", 9, 217).then(sentences => {
