@@ -2,14 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6680643-8ab2-49c4-8e6c-a035caeffe7a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classify.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/train.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/examplePdf.pdf" afterPath="$PROJECT_DIR$/pdfs/examplePdf.pdf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/irish.pdf" afterPath="$PROJECT_DIR$/pdfs/irish.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indexer.js" afterPath="$PROJECT_DIR$/indexer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -53,8 +45,7 @@
       <file leaf-file-name="indexer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indexer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+
               <folding />
             </state>
           </provider>
@@ -80,11 +71,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="timeline.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/timeline.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
-              <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -123,13 +109,12 @@
         <option value="$PROJECT_DIR$/pdfread.js" />
         <option value="$PROJECT_DIR$/js/query.js" />
         <option value="$PROJECT_DIR$/js/timeline.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
+
         <option value="$PROJECT_DIR$/subIndexer.js" />
         <option value="$PROJECT_DIR$/bayes.json" />
         <option value="$PROJECT_DIR$/main.js" />
         <option value="$PROJECT_DIR$/indexer.js" />
-        <option value="$PROJECT_DIR$/classify.js" />
-        <option value="$PROJECT_DIR$/train.js" />
+
       </list>
     </option>
   </component>
@@ -429,7 +414,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68024000" />
+
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -714,6 +699,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="14" lean-forward="false" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
+
         </state>
       </provider>
     </entry>
@@ -822,16 +808,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indexer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="29" lean-forward="false" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+
           <folding />
         </state>
       </provider>

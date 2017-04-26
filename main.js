@@ -8,6 +8,7 @@ const path = require('path');
 const url = require('url');
 const ipc = require('electron').ipcMain;
 
+//console.log("hello")
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
@@ -19,13 +20,15 @@ function createWindow () {
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, '/views/timeline.html'),
+    pathname: path.join(__dirname, '/display.html'),
     protocol: 'file:',
     slashes: true
   }));
 
   // Open the DevTools.
+  mainWindow.webContents.send('timelineData', [{date: "1546", sentence: "This is a sentence", page: "34"}])
   mainWindow.webContents.openDevTools();
+
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -34,7 +37,6 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   });
-
 }
 
 // This method will be called when Electron has finished
@@ -61,10 +63,16 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-ipc.on('gettimeline', function(event, arg){
-  event.sender.send('PING', 'WINGS!');
-  //console.log('PING');
+ipc.on('buttonClicked', function(event, arg){
+  console.log(arg)
+  indexPdf=require("./indexer.js");
+  indexPdf("./"+arg[0], parseInt(arg[1]), parseInt(arg[2])).then(function(lunr){
+      console.log(lunr)
+  });
 });
+ipc.on("reply", function(event, arg){
+event.sender.send("timelineData",[{date:"1974",sentence:"this is a sentence",page:"34"}])
+})
 
 function testIndexer(){
     indexPdf = require("./indexer.js");
@@ -72,4 +80,5 @@ function testIndexer(){
     indexPdf("./pdfs/irish.pdf", 9, 217).then(sentences => {
       dates = classify(sentences);
     });
+
 }
