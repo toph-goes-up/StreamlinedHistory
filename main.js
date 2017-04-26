@@ -67,7 +67,8 @@ ipc.on('buttonClicked', function(event, arg){
   console.log(arg)
   indexPdf=require("./indexer.js");
   indexPdf("./"+arg[0], parseInt(arg[1]), parseInt(arg[2])).then(function(lunr){
-      console.log(lunr)
+    //event.sender.send("timelineData", all the timeline data)
+    console.log(lunr)
   });
 });
 ipc.on("reply", function(event, arg){
