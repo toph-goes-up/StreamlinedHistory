@@ -70,6 +70,9 @@ ipc.on('buttonClicked', function(event, arg){
       console.log(lunr)
   });
 });
+ipc.on("reply", function(event, arg){
+event.sender.send("timelineData",[{date:"1974",sentence:"this is a sentence",page:"34"}])
+})
 
 function testQuery(query){
   index = require('./indexer')('./sample.pdf');
