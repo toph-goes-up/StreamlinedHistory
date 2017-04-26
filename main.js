@@ -63,24 +63,38 @@ app.on('activate', function () {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 ipc.on('buttonClicked', function(event, arg){
-  console.log(arg);
-  indexPdf("./"+arg[0], parseInt(arg[1]), parseInt(arg[2])).then(timelineData => {
-    console.log('Sending ' + timelineData.length() + " timeline items...");
-    event.sender.send('timelineData', timelineData);
-    console.log('Sent.')
-  });
+    var file = arg[0];
+    var startPage = arg[1];
+    var endPage = arg[2];
+
+    ipc.on('displayReady', (event, arg) => {
+        indexPdf("./"+file, parseInt(startPage), parseInt(endPage)).then(sentences => {
+            let timelineData = classify(sentences);
+
+            console.log('Sending ' + timelineData.length + " timeline items...");
+            event.sender.send('timelineData', timelineData);
+            console.log('Sent.')
+        });
+    });
+
+    event.sender.send('received', null);
 });
 
+
+
+
+/*
 //testing for display.js
 ipc.on("reply", function(event, arg){
  json=[{date: "1546", sentence: "This is a sentence", page: "34"},
   {date: "1436", sentence: "This is a verrrrrrrrrrry biggggggggggggggggg sentence", page: "34"},
   {date: "1136", sentence: "This is a verrrrrrrrrrry biggggggggggggggggg sentence", page: "34"},
   {date: "1336", sentence: "This is a verrrrrrrrrrry biggggggggggggggggg sentence", page: "34"}
-]
+];
 event.sender.send('timelineData', json)
 
-})
+});
+*/
 
 function testQuery(query){
   index = require('./indexer')('./sample.pdf');

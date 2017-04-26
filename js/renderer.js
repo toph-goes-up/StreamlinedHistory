@@ -19,8 +19,10 @@ $( document ).ready(function() {
     //alert( "Handler for .submit() called." );
     //sends [filename, startpage, endpage]
     ipcRenderer.send('buttonClicked', arr);
-    //and then redirect
-    window.location.href = './display.html';
     event.preventDefault();
     });
+});
+
+ipcRenderer.on('received', (event, args)=>{
+    window.location.href = './display.html';
 });
