@@ -20,7 +20,7 @@ function createWindow () {
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, '/index.html'),
+    pathname: path.join(__dirname, '/display.html'),
     protocol: 'file:',
     slashes: true
   }));
@@ -72,7 +72,12 @@ ipc.on('buttonClicked', function(event, arg){
 });
 //testing for display.js
 //ipc.on("reply", function(event, arg){
-//event.sender.send('timelineData', [{date: "1546", sentence: "This is a sentence", page: "34"},{date: "1546", sentence: "This is a verrrrrrrrrrry biggggggggggggggggg sentence", page: "34"}])
+//  json=[{date: "1546", sentence: "This is a sentence", page: "34"},
+  //{date: "1436", sentence: "This is a verrrrrrrrrrry biggggggggggggggggg sentence", page: "34"},
+  //{date: "1136", sentence: "This is a verrrrrrrrrrry biggggggggggggggggg sentence", page: "34"},
+  //{date: "1336", sentence: "This is a verrrrrrrrrrry biggggggggggggggggg sentence", page: "34"}
+//]
+//event.sender.send('timelineData', json)
 
 //})
 //
@@ -91,4 +96,4 @@ function testIndexer(){
       dates = classify(sentences);
     });
 
-//}
+}
