@@ -74,19 +74,11 @@ ipc.on("reply", function(event, arg){
 event.sender.send("timelineData",[{date:"1974",sentence:"this is a sentence",page:"34"}])
 })
 
-function testQuery(query){
-  index = require('./indexer')('./sample.pdf');
-  index.then(function(index){
-    let results = index.search(query);
-    console.log(results)
-  });
-}
-
 function testIndexer(){
-  console.log("in test")
-    indexPdf=require("./indexer.js");
-    indexPdf("./irish.pdf", 9, 217).then(function(lunr){
-        console.log(lunr)
+    indexPdf = require("./indexer.js");
+    classify = require("./classify.js");
+    indexPdf("./pdfs/irish.pdf", 9, 217).then(sentences => {
+      dates = classify(sentences);
     });
 
 }
