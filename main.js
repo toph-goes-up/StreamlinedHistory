@@ -35,8 +35,6 @@ function createWindow () {
     mainWindow = null
   });
 
-  //testQuery('technical');
-    testIndexer();
 }
 
 // This method will be called when Electron has finished
@@ -68,17 +66,10 @@ ipc.on('gettimeline', function(event, arg){
   //console.log('PING');
 });
 
-function testQuery(query){
-  index = require('./indexer')('./sample.pdf');
-  index.then(function(index){
-    let results = index.search(query);
-    console.log(results)
-  });
-}
-
 function testIndexer(){
-    indexPdf=require("./indexer.js");
-    indexPdf("./irish.pdf", 9, 217).then(function(lunr){
-        console.log(lunr)
+    indexPdf = require("./indexer.js");
+    classify = require("./classify.js");
+    indexPdf("./pdfs/irish.pdf", 9, 217).then(sentences => {
+      dates = classify(sentences);
     });
 }
