@@ -14,9 +14,9 @@ ipcRender.on('timelineData', function(event, arg){
   var html = '';
   //create the html for display.html with json objects
   for(var i = 0; i < arg.length; i++){
-    html += '<tr><td style="text-align:left;">[' + arg[i].date +
-      ']'+'</td><td style="text-align:center;">' +arg[i].sentence+
-      '</td><td style="text-align:right;"> '+ " [Page: "+arg[i].page+ ']</td></tr>';
+    html += '<tr><td class="leftCell">[' + arg[i].date +
+      ']'+'</td><td class="midCell">' +arg[i].sentence+
+      '</td><td class="rightCell"> '+ " [Page: "+arg[i].page+ ']</td></tr>';
         }
   $('#table tr').first().after(html);
 });

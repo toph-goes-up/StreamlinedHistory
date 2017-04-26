@@ -3,6 +3,7 @@ h1{
   font-weight:300;
 
 }
+
 p{
   font-family: Verdana;
   font-weight: 300;
@@ -17,11 +18,11 @@ input{
   font-weight: 300;
   margin: auto;
 }
+
 ::-webkit-input-placeholder { /* Chrome */
   color: black;
   opacity: 1;
 }
-
 
 button{
     display: inline-block;
@@ -40,7 +41,6 @@ button:hover{
     background-color: #42f442;
 }
 
-
 footer{
   background-color:#f4a142;
   margin-top: 0px;
@@ -53,6 +53,31 @@ footer{
   width: 100%;
   margin-bottom: 0px;
 }
+
 body{
   margin-bottom:50px;
+  text-align: center;
+}
+
+table{
+    margin: 0 auto;
+    text-align: left;
+}
+
+table, th, td{
+    border: 1px black solid;
+    border-collapse: collapse;
+}
+
+.leftCell{
+    width: 12em;
+}
+
+.midCell{
+    width: 300px;
+    margin: 3px 10px;
+}
+
+.rightCell{
+    width: 12em;
 }
