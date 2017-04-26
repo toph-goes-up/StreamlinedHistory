@@ -16,10 +16,9 @@ $( document ).ready(function() {
       console.log(arr)
     //alert( "Handler for .submit() called." );
     const ipcRenderer = require('electron').ipcRenderer;
-    ipcRenderer.send('buttonClicked',arr);
+    //sends [filename, startpage, endpage]
+    ipcRenderer.send('buttonClicked', arr);
+    //and then redirect
     event.preventDefault();
-
-
-
     });
 });

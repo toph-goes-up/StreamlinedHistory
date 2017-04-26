@@ -66,7 +66,8 @@ ipc.on('buttonClicked', function(event, arg){
   console.log(arg)
   indexPdf=require("./indexer.js");
   indexPdf("./"+arg[0], parseInt(arg[1]), parseInt(arg[2])).then(function(lunr){
-      console.log(lunr)
+    //event.sender.send("timelineData", all the timeline data)
+    console.log(lunr)
   });
 });
 //testing for display.js
@@ -83,11 +84,11 @@ ipc.on('buttonClicked', function(event, arg){
   //});
 //}
 
-//function testIndexer(){
-//  console.log("in test")
-  //  indexPdf=require("./indexer.js");
-    //indexPdf("./irish.pdf", 9, 217).then(function(lunr){
-      //  console.log(lunr)
-    //});
+function testIndexer(){
+    indexPdf = require("./indexer.js");
+    classify = require("./classify.js");
+    indexPdf("./pdfs/irish.pdf", 9, 217).then(sentences => {
+      dates = classify(sentences);
+    });
 
 //}
